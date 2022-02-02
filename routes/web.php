@@ -27,3 +27,7 @@ Route::group(['prefix' => '/admin/employeeprofile'], function (){
     Route::post         ('/update/{id}',                 'TestimonialsController@update'                         )->name('reason_update');
     Route::get          ('/destroy/{id}',                'TestimonialsController@destroy'                        )->name('reason_update');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
