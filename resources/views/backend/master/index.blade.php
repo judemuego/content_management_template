@@ -12,6 +12,8 @@
     <link href="{{{ URL::asset('backend/css/modern.css') }}}" rel="stylesheet">
     
     @yield('scripts')
+    @yield('styles')
+
 </head>
 <body>
     <div class="wrapper">
@@ -43,8 +45,8 @@
         </div>
         </div>
     </div>
-    <script src="{{{ URL::asset('backend/js/settings.js') }}}"></script>
     <script src="{{{ URL::asset('backend/js/app.js') }}}"></script>
+    <script src="{{asset('/js/global.js')}}" ></script>
 
     <script>
 		$(function() {

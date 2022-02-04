@@ -20,7 +20,7 @@
                 <ul id="maintenance" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="sidebar-item"><a class="sidebar-link" href="dashboard-default.html">Customers</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="dashboard-e-commerce.html">Products</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="dashboard-analytics.html">Colors</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/inventory/color">Colors</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="dashboard-e-commerce.html">Class of Bags</a></li>
                 </ul>
             </li>
