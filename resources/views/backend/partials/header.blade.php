@@ -23,7 +23,7 @@
                         <a href="#" class="list-group-item">
                             <div class="row no-gutters align-items-center">
                                 <div class="col-2">
-                                    <img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Michelle Bilodeau">
+                                    <img src="{{ asset('backend/img/avatars/avatar-5.jpg')}}" class="avatar img-fluid rounded-circle" alt="Michelle Bilodeau">
                                 </div>
                                 <div class="col-10 pl-2">
                                     <div class="text-dark">Michelle Bilodeau</div>
@@ -35,7 +35,7 @@
                         <a href="#" class="list-group-item">
                             <div class="row no-gutters align-items-center">
                                 <div class="col-2">
-                                    <img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Kathie Burton">
+                                    <img src="{{ asset('backend/img/avatars/avatar-3.jpg')}}" class="avatar img-fluid rounded-circle" alt="Kathie Burton">
                                 </div>
                                 <div class="col-10 pl-2">
                                     <div class="text-dark">Kathie Burton</div>
@@ -47,7 +47,7 @@
                         <a href="#" class="list-group-item">
                             <div class="row no-gutters align-items-center">
                                 <div class="col-2">
-                                    <img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="Alexander Groves">
+                                    <img src="{{ asset('backend/img/avatars/avatar-2.jpg')}}" class="avatar img-fluid rounded-circle" alt="Alexander Groves">
                                 </div>
                                 <div class="col-10 pl-2">
                                     <div class="text-dark">Alexander Groves</div>
@@ -59,7 +59,7 @@
                         <a href="#" class="list-group-item">
                             <div class="row no-gutters align-items-center">
                                 <div class="col-2">
-                                    <img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Daisy Seger">
+                                    <img src="{{ asset('backend/img/avatars/avatar-4.jpg')}}" class="avatar img-fluid rounded-circle" alt="Daisy Seger">
                                 </div>
                                 <div class="col-10 pl-2">
                                     <div class="text-dark">Daisy Seger</div>

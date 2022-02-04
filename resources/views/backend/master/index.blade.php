@@ -7,25 +7,45 @@
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link href="{{{ URL::asset('css/style.css') }}}" rel="stylesheet">
     <link href="{{{ URL::asset('backend/css/modern.css') }}}" rel="stylesheet">
-    <script src="{{{ URL::asset('backend/js/settings.js') }}}"></script>
     
     @yield('scripts')
 </head>
 <body>
     <div class="wrapper">
-        @include('backend.partial.sidebar')
+        @include('backend.partials.sidebar')
         <div class="main">
-            @include('backend.partial.header')
+            @include('backend.partials.header')
             <main class="content">
                 <div class="container-fluid">
                     @yield('content')
                 </div>
             </main>
-            @include('backend.partial.footer')
+            @include('backend.partials.footer')
         </div>
     </div>
+
+    <div class="modal fade" id="deleteMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this data?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" onclick="delete_func.yes()">Yes</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="{{{ URL::asset('backend/js/settings.js') }}}"></script>
     <script src="{{{ URL::asset('backend/js/app.js') }}}"></script>
+
     <script>
 		$(function() {
 			// Datatables basic

@@ -1,0 +1,14 @@
+.alert {
+    border-radius: 0px !important;
+}
+p.alert-message {
+    margin-bottom: 0em !important;
+}
+img.company-logo {
+    width: 200px;
+}
+footer.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
