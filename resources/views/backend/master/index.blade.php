@@ -63,5 +63,8 @@
 			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)")
 		});
 	</script>
+    
+    @yield('chart-js')
+
 </body>
 </html>

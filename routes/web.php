@@ -16,7 +16,7 @@ Route::group(['middleware' => ['auth']], function() {
         
     });
 
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('backend.pages.dashboard');
     });
 
