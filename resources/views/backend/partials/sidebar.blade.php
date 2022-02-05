@@ -18,10 +18,10 @@
                     <i class="align-middle mr-2 far fa-folder-open"></i> <span class="align-middle">Masterfile</span>
                 </a>
                 <ul id="maintenance" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="dashboard-default.html">Customers</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/inventory/customer">Customers</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="dashboard-e-commerce.html">Products</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/inventory/color">Colors</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="dashboard-e-commerce.html">Class of Bags</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/inventory/bag">Class of Bags</a></li>
                 </ul>
             </li>
             <li class="sidebar-header">

@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ItemType extends Model
+class Bag extends Model
 {
     protected $fillable = [
-        'item_type_name'
+        'id',
+        'class_code',
+        'bag_type'
     ];
 }

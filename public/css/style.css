@@ -12,3 +12,16 @@ footer.footer {
     bottom: 0;
     width: 100%;
 }
+label#email_address-error {
+    color: #ff0000;
+}
+::-webkit-input-placeholder {
+    color: #dfdfdf !important;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #dfdfdf !important;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #dfdfdf !important;
+  }

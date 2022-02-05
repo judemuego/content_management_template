@@ -22,12 +22,13 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::group(['prefix' => '/inventory'], function (){
 
-        Route::group(['prefix' => 'item_type', 'middleware' => ['auth']], function (){
-            Route::get          ('/',                            'ItemTypeController@index'                          )->name('selection');
-            Route::post         ('/save',                        'ItemTypeController@store'                          )->name('reason');
-            Route::get          ('/edit/{id}',                   'ItemTypeController@edit'                           )->name('reason');
-            Route::post         ('/update/{id}',                 'ItemTypeController@update'                         )->name('reason_update');
-            Route::get          ('/destroy/{id}',                'ItemTypeController@destroy'                        )->name('reason_update');
+        Route::group(['prefix' => '/customer'], function (){
+            Route::get          ('/',                            'CustomerController@index'                                  )->name('customer');
+            Route::get          ('/get',                         'CustomerController@get'                                    )->name('get_customer');
+            Route::post         ('/save',                        'CustomerController@store'                                  )->name('save_customer');
+            Route::get          ('/edit/{id}',                   'CustomerController@edit'                                   )->name('edit_customer');
+            Route::post         ('/update/{id}',                 'CustomerController@update'                                 )->name('update_customer');
+            Route::get          ('/destroy/{id}',                'CustomerController@destroy'                                )->name('destroy_customer');
         });
 
         Route::group(['prefix' => '/color'], function (){
@@ -37,6 +38,15 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get          ('/edit/{id}',                   'ColorController@edit'                                   )->name('edit_color');
             Route::post         ('/update/{id}',                 'ColorController@update'                                 )->name('update_color');
             Route::get          ('/destroy/{id}',                'ColorController@destroy'                                )->name('destroy_color');
+        });
+
+        Route::group(['prefix' => '/bag'], function (){
+            Route::get          ('/',                            'BagController@index'                                  )->name('bag');
+            Route::get          ('/get',                         'BagController@get'                                    )->name('get_bag');
+            Route::post         ('/save',                        'BagController@store'                                  )->name('save_bag');
+            Route::get          ('/edit/{id}',                   'BagController@edit'                                   )->name('edit_bag');
+            Route::post         ('/update/{id}',                 'BagController@update'                                 )->name('update_bag');
+            Route::get          ('/destroy/{id}',                'BagController@destroy'                                )->name('destroy_bag');
         });
         
 

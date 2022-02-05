@@ -1,9 +1,9 @@
 @extends('backend.master.index')
 
-@section('title', 'Color')
+@section('title', 'Class of Bag')
 
 @section('breadcrumbs')
-    <span>Maintenance</span>  /  <span class="highlight">Color List</span>
+    <span>Maintenance</span>  /  <span class="highlight">Class of Bags</span>
 @endsection
 
 @section('content')
@@ -11,9 +11,9 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Color Maintenance Screen
-                    <button type="button" class="btn btn-primary add" data-toggle="modal" data-target="#colorModal" style="float:right">
-                        Add Color
+                <h5 class="card-title">Class of Bag Maintenance Screen
+                    <button type="button" class="btn btn-primary add" data-toggle="modal" data-target="#bagModal" style="float:right">
+                        Add Class of Bag
                     </button>
                 </h5>
             </div>
@@ -24,8 +24,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Color Code</th>
-                                <th>Color Name</th>
+                                <th>Class Code</th>
+                                <th>Bag Type</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -36,12 +36,12 @@
     </div>
 
     {{-- MODAL --}}
-    <div class="modal fade" id="colorModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="bagModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <form id="save_record" method="post">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Color</h5>
+                        <h5 class="modal-title">Add Class of Bag</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -50,12 +50,12 @@
                             @csrf
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label for="">Color Code</label>
-                                <input type="text" class="form-control" id="color_code" name="color_code" placeholder="Color Code">
+                                <label for="">Class Code</label>
+                                <input type="text" class="form-control" id="class_code" name="class_code" placeholder="Class Code">
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="">Color Name</label>
-                                <input type="text" class="form-control" id="color_name" name="color_name" placeholder="Color Name">
+                                <label for="">Bag Type</label>
+                                <input type="text" class="form-control" id="bag_type" name="bag_type" placeholder="Bag Type">
                             </div>
                         </div>
                     </div>
@@ -83,16 +83,16 @@
                processing: true,
                serverSide: true,
                ajax: {
-                   url: "/inventory/color/get",
+                   url: "/inventory/bag/get",
                    type: "GET"
                },
                columns: [
                    { data: "DT_RowIndex", title:"#" },
-                   { data: "color_code", title: "Color Code" },
-                   { data: "color_name", title: "Color Name" },
+                   { data: "class_code", title: "Class Code" },
+                   { data: "bag_type", title: "Bag Type" },
                    { data: "id", title:"Action", render: function(data, type, row, meta) {
                        var html = "";
-                       html += '<a href="#" class="align-middle edit" onclick="edit(' + row.id + ')" title="Edit" data-toggle="modal" data-target="#colorModal"><i class="fas fa-pen"></i></a>';
+                       html += '<a href="#" class="align-middle edit" onclick="edit(' + row.id + ')" title="Edit" data-toggle="modal" data-target="#bagModal"><i class="fas fa-pen"></i></a>';
                        html += '<a href="#"  onclick="deleteRecord('+row.id+')" data-toggle="modal" data-target="#deleteMessage"><i class="align-middle fas fa-fw fa-trash"></i></a>';
                        return html;
                    }}
@@ -100,7 +100,7 @@
            });
 
             $('.add').click(function(){
-                $('.modal-title').text('Add Color');
+                $('.modal-title').text('Add Class of Bag');
                 $('.submit-button').text('Add');
                 $('#save_record')[0].reset();
                 record_id = null;
@@ -111,17 +111,17 @@
                     var formData = $("#save_record").serialize();
 
                     if(record_id === null) {
-                        scion.record.add('/inventory/color/save', formData,
+                        scion.record.add('/inventory/bag/save', formData,
                         function() {
                             $('#datatables').DataTable().draw();
-                            $('#colorModal').modal('hide');
+                            $('#bagModal').modal('hide');
                         });
                     }
                     else {
-                        scion.record.update('/inventory/color/update', record_id, formData,
+                        scion.record.update('/inventory/bag/update', record_id, formData,
                         function() {
                             $('#datatables').DataTable().draw();
-                            $('#colorModal').modal('hide');
+                            $('#bagModal').modal('hide');
                         },
                         function() {});
                     }
@@ -137,11 +137,11 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/inventory/color/edit/' + id,
+                url: '/inventory/bag/edit/' + id,
                 method: 'get',
                 data: {},
                 success: function(data) {
-                    $('.modal-title').text('Update Color');
+                    $('.modal-title').text('Update Class of Bag');
                     $('.submit-button').text('Update');
                     record_id = id;
                     $.each(data, function() {
@@ -154,7 +154,7 @@
         }
         
         function deleteRecord(id) {
-            delete_func = scion.record.delete('/inventory/color/destroy', id,
+            delete_func = scion.record.delete('/inventory/bag/destroy', id,
             function() {
                 $('#datatables').DataTable().draw();
             },
