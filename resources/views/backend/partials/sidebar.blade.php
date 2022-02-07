@@ -5,7 +5,7 @@
     <div class="sidebar-content">
         <div class="sidebar-user">
             <img src="{{ asset('backend/img/avatars/avatar.jpg')}}" class="img-fluid rounded-circle mb-2" alt="Linda Miller" />
-            <div class="font-weight-bold">User 01</div>
+            <div class="font-weight-bold">{{ Auth::user()->name }}</div>
             <small>Super Admin</small>
         </div>
 
@@ -19,7 +19,7 @@
                 </a>
                 <ul id="maintenance" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="sidebar-item"><a class="sidebar-link" href="/inventory/customer">Customers</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="dashboard-e-commerce.html">Products</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/inventory/product">Products</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/inventory/color">Colors</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/inventory/bag">Class of Bags</a></li>
                 </ul>

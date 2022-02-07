@@ -40,13 +40,11 @@ class BagController extends Controller
         return response()->json(compact('bags'));
     }
 
-
     public function update(Request $request, $id)
     {
         Bag::find($id)->update($request->all());
         return "Record Saved";
     }
-
 
     public function destroy($id)
     {

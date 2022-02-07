@@ -10,7 +10,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::orderBy('id', 'desc')->get();
-        return view('backend.pages.inventory.maintenance.customer', compact('customers'));
+        return view('backend.pages.inventory.maintenance.customers', compact('customers'));
     }
 
     public function get() {
