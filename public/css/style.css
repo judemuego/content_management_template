@@ -25,3 +25,11 @@ label#email_address-error {
   ::-ms-input-placeholder { /* Microsoft Edge */
     color: #dfdfdf !important;
   }
+span.error-message {
+    display: block;
+    padding: 2px 10px;
+    background: #ff6060 !important;
+    font-size: 12px;
+    color: #fff;
+    width: 100%;
+}

@@ -45,6 +45,29 @@
         </div>
         </div>
     </div>
+
+    
+    <div class="modal fade" id="lookupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="lookupModalTitle">Employee</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table id="lookup" class="table table-striped" style="width:100%">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
     <script src="{{{ URL::asset('backend/js/app.js') }}}"></script>
     <script src="{{asset('/js/global.js')}}" ></script>
 
@@ -54,6 +77,13 @@
 			$('#datatables-basic').DataTable({
 				responsive: true
 			});
+            
+            $('#lookup tbody').on('click', 'tr', function () {
+                var data = $('#lookup').DataTable().row(this).data();
+                // alert( 'You clicked on '+data[0]+'\'s row' );
+                console.log(data);
+            });
+
 			// Datatables with Buttons
 			var datatablesButtons = $('#datatables-buttons').DataTable({
 				lengthChange: !1,

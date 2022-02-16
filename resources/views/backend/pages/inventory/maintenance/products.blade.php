@@ -56,22 +56,30 @@
                                 <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Product Name">
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="">Color</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" style="outline:none !important;" aria-label="Color" aria-describedby="basic-addon1" id="color" name="color" readonly  data-toggle="modal" data-target="#colorList">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text bg-primary text-light" id="basic-addon1"  data-toggle="modal" data-target="#colorList"><i class="fas fa-search"></i></span>
-                                    </div>
-                                </div>
+                                @include('backend.partials.component.lookup', [
+                                    'label' => "Color", 
+                                    'id' => "color", 
+                                    'title' => "Color", 
+                                    'url' => "/inventory/color/get", 
+                                    'data' => array(
+                                                array('data' => "DT_RowIndex", 'title' => "#"), 
+                                                array('data' => "color_code", 'title' => "Color Code"),
+                                                array('data' => "color_name", 'title' => "Color Name")
+                                                )
+                                ])
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="">Class Name</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" style="outline:none !important;" aria-label="Class Name" aria-describedby="basic-addon1" id="class_name" name="class_name" readonly  data-toggle="modal" data-target="#classnameList">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text bg-primary text-light" id="basic-addon1"  data-toggle="modal" data-target="#classnameList"><i class="fas fa-search"></i></span>
-                                    </div>
-                                </div>
+                                @include('backend.partials.component.lookup', [
+                                    'label' => "Type of Bag", 
+                                    'id' => "class_name", 
+                                    'title' => "Type of Bag", 
+                                    'url' => "/inventory/bag/get", 
+                                    'data' => array(
+                                                array('data' => "DT_RowIndex", 'title' => "#"), 
+                                                array('data' => "class_code", 'title' => "Class Code"),
+                                                array('data' => "bag_type", 'title' => "Bag Type")
+                                                )
+                                ])
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="">Unit Price</label>
@@ -90,65 +98,6 @@
     {{-- MODAL --}}
 
 
-{{--Color Modal--}}
-<div class="modal fade" id="colorList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">List of Color</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-12">
-                    <table id="datatables" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Color Code</th>
-                                <th>Color Name</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>
-{{--Color Modal--}}
-
-{{--Color Modal--}}
-<div class="modal fade" id="classnameList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Class of Bags</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-12">
-                    <table id="datatables" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Class Code</th>
-                                <th>Bag Type</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>
-{{--Color Modal--}}
                     
 @stop
 
@@ -158,34 +107,41 @@
     {
         margin-bottom: 0px !important;
     }
+    div#lookupModal{
+        z-index: 99999 !important;
+        background: rgba(0,0,0,0.5) !important;
+    }
+    span.error-message {
+        color: red;
+    }
 </style>
 
 @section('scripts')
 <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script>
     $(function() {
-    $('#datatables').DataTable({
-        responsive: true,
-        processing: true,
-        serverSide: true,
-        ajax: {
-            url: "/inventory/product/get",
-            type: "GET"
-        },
-        columns: [
-            { data: "DT_RowIndex", title:"#" },
-            { data: "product_name", title: "Product Name" },
-            { data: "color", title: "color" },
-            { data: "class_name", title: "class_name" },
-            { data: "unit_price", title: "unit_price" },
-            { data: "id", title:"Action", render: function(data, type, row, meta) {
-                var html = "";
-                html += '<a href="#" class="align-middle edit" onclick="edit(' + row.id + ')" title="Edit" data-toggle="modal" data-target="#productModal"><i class="fas fa-pen"></i></a>';
-                html += '<a href="#"  onclick="deleteRecord('+row.id+')" data-toggle="modal" data-target="#deleteMessage"><i class="align-middle fas fa-fw fa-trash"></i></a>';
-                return html;
-            }}
-        ]
-    });
+        $('#datatables').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: "/inventory/product/get",
+                type: "GET"
+            },
+            columns: [
+                { data: "DT_RowIndex", title:"#" },
+                { data: "product_name", title: "Product Name" },
+                { data: "color", title: "Color" },
+                { data: "class_name", title: "Class Name" },
+                { data: "unit_price", title: "Unit Price" },
+                { data: "id", title:"Action", render: function(data, type, row, meta) {
+                    var html = "";
+                    html += '<a href="#" class="align-middle edit" onclick="edit(' + row.id + ')" title="Edit" data-toggle="modal" data-target="#productModal"><i class="fas fa-pen"></i></a>';
+                    html += '<a href="#"  onclick="deleteRecord('+row.id+')" data-toggle="modal" data-target="#deleteMessage"><i class="align-middle fas fa-fw fa-trash"></i></a>';
+                    return html;
+                }}
+            ]
+        });
 
         $('.add').click(function(){
             $('.modal-title').text('Add Product');
@@ -216,7 +172,9 @@
                 return false;
             }
         });
+        
     });
+
 
     function edit(id){
         event.preventDefault();

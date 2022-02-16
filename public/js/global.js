@@ -41,8 +41,8 @@ var scion = {
                 }
                 
                 for (field in response.responseJSON.errors) {
-                    $('#'+field).nextAll().remove();
-                    $('#'+field).after('<span class="error-message">'+response.responseJSON.errors[field][0]+'</span>');
+                    $('#'+field+"_error_message").remove();
+                    $('.'+field).append('<span id="'+field+'_error_message" class="error-message">'+response.responseJSON.errors[field][0]+'</span>');
                 }
 
                 toastr.error(response.responseJSON.message);
@@ -81,6 +81,33 @@ var scion = {
             }
 
             return result;
+        },
+        table(field_id, url, data) {
+            $('#'+field_id).DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: url,
+                    type: "GET"
+                },
+                columns: data
+            });
+        }
+    },
+    lookup(title, field_id, url, data) {
+        $('#lookupModalTitle').text(title);
+        if ( $.fn.DataTable.isDataTable('#lookup') ) {
+            $('#lookup').DataTable().destroy();
+        }
+        scion.create.table('lookup', url, data);
+        $('#lookupModal').modal('show');
+    },
+    fileView(event) {
+        var output = document.getElementById('viewer');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+            URL.revokeObjectURL(output.src);
         }
     }
 }
